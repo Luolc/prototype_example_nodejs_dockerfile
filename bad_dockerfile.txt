@@ -1,0 +1,13 @@
+# This dockerfile has syntax errors and missing base image
+FROM nonexistent-base-image:invalid-tag
+
+# Invalid instruction syntax
+INVALID_INSTRUCTION this should fail
+
+# Copy from non-existent source
+COPY /non/existent/path ./
+
+# Run invalid command
+RUN this-command-does-not-exist
+
+CMD ["invalid-command"]

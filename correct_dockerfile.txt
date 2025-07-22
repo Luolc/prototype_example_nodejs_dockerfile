@@ -1,0 +1,21 @@
+# Use Alpine Linux with Node.js
+FROM node:24-alpine3.22
+
+# Set working directory
+WORKDIR /app
+
+# Copy package.json first for better layer caching
+COPY package.json ./
+
+# Install dependencies using npm (simpler than pnpm for test)
+RUN npm install
+
+# Copy application code
+COPY . .
+
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Start the application
+CMD ["npm", "start"]
+
